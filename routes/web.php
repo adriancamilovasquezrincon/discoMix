@@ -12,15 +12,26 @@
 */
 
 Route::get('/demo', function () {
-    return 'welcome';
+    return 'Bienvenido';
 });
 
-Route::get('/invitados','invitadosController@index');
-Route::get('/hombre','invitadosController@primero');
-Route::get('/mujer','invitadosController@segundo');
-Route::get('/datos','invitadosController@tercero');
-Route::get('/fiesta','invitadosController@cuarto');
-Route::get('/discoteca','invitadosController@quinto');
-Route::post('/invitados/guardar','invitadosController@store')->name('guardar');
-Route::put('/invitados/actualizar','invitadosController@update')->name('actualizar');
-Route::delete('/invitados/eliminar','invitadosController@destroy')->name('eliminar');
+//rutas invitados
+
+
+Route::get('/api/hombre','invitController@primero');
+Route::get('/api/mujer','invitController@segundo');
+Route::get('/api/datos','invitController@tercero');
+Route::get('/api/fiesta','invitController@cuarto');
+Route::get('/api/discoteca','invitController@quinto');
+//prueba invitados
+Route::get('/api/invitar','invitController@index');
+Route::post('/api/invitar/guardar','invitController@store')->name('guardar');
+Route::put('/api/invitar/actualizar','invitController@update')->name('actualizar');
+Route::delete('/api/invitar/eliminar','invitController@delete')->name('eliminar');
+//recepcion
+Route::get('/api/recibir','recepcionController@index');
+Route::post('/api/recibir/guardar','recepcionController@store')->name('guardar');
+Route::put('/api/recibir/actualizar','recepcionController@update')->name('actualizar');
+Route::delete('/api/recibirr/eliminar','recepcionController@delete')->name('eliminar');
+
+

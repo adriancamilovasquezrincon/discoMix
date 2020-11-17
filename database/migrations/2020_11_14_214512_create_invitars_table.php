@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInvitadosTable extends Migration
+class CreateInvitarsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,18 @@ class CreateInvitadosTable extends Migration
      */
     public function up()
     {
-        Schema::create('invitados', function (Blueprint $table) {
-            $table->increments('id_invitado');
+        Schema::create('invitars', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('Tipo_documento',3);
-            $table->string('DNI',15);
+            $table->string('nro_doc',15);
             $table->string('nombres',45);
             $table->string('apellidos',45);
-            $table->string('email',15)->unique();
-            $table->integer('edad',45);
-            $table->timestamps();
+            $table->integer('edad');
+            $table->string('sexo',45);
+            $table->string('telefono',45);
+            $table->string('direccion',45);
+            $table->string('email',45);
+            $table->string('tipo_persona',60);
             $table->timestamps();
         });
     }
@@ -33,6 +36,6 @@ class CreateInvitadosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('invitados');
+        Schema::dropIfExists('invitars');
     }
 }

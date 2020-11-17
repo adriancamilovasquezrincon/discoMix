@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIngresosTable extends Migration
+class CreateRecibirsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateIngresosTable extends Migration
      */
     public function up()
     {
-        Schema::create('ingresos', function (Blueprint $table) {
+        Schema::create('recibirs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('ingresados');
-            $table->unsignedBigInteger('recepcionista_id');
-            $table->foreign('recepcionista_id')->references('id_recepcionista')->on('recepcionistas');
-            $table->unsignedBigInteger('invitado_id');
-            $table->foreign('invitado_id')->references('id_invitado')->on('invitados');
+            $table->string('fecha',45);
+            $table->unsignedBigInteger('rec_id');
+            $table->foreign('rec_id')->references('id')->on('invitars');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateIngresosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ingresos');
+        Schema::dropIfExists('recibirs');
     }
 }
